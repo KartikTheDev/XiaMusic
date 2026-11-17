@@ -1,1 +1,1 @@
-export const DISPLAY_VERSION = 'X.0.01'
+export const DISPLAY_VERSION = 'X.0.02'

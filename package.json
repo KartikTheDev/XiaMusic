@@ -1,6 +1,6 @@
 {
   "name": "xiamusic",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "private": true,
   "description": "XiaMusic — your local music player for web and Windows desktop.",
   "main": "electron/main.cjs",

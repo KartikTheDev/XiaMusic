@@ -76,12 +76,13 @@ export default function EqualizerPanel({ settings, onChange }: Props) {
               <div className="eq-slider-shell">
                 <input
                   id={`eq-band-${frequency}`}
-                  className="eq-slider"
+                  className={`eq-slider ${settings.gains[index] > 0 ? 'is-positive' : settings.gains[index] < 0 ? 'is-negative' : ''}`}
                   type="range"
                   min="-12"
                   max="12"
                   step="0.5"
                   value={settings.gains[index]}
+                  style={{ '--eq-value': `${((settings.gains[index] + 12) / 24) * 100}%` } as React.CSSProperties}
                   aria-label={`${formatFrequency(frequency)} gain`}
                   aria-valuetext={`${settings.gains[index].toFixed(1)} decibels`}
                   onChange={event => setGain(index, Number(event.target.value))}

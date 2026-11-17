@@ -60,6 +60,11 @@ XiaMusic should use information only for purposes consistent with the feature th
 
 We do not intend for personal music metadata or application preferences to be used for unrelated advertising or profiling.
 
+## Feedback Portal
+The Feedback Portal currently has no configured online submission endpoint. While you fill in the form, its category, message, optional name and email, and consent choice are held only in the running application interface. They are not written to local storage, transmitted, or submitted. If you press Submit while no endpoint is configured, the application reports that the feedback was not submitted and does not retain the form contents after the page is closed or reloaded.
+
+If XiaLabs later enables a secure online submission endpoint, the form will send the selected category, feedback message, optional name and email, and consent state to that endpoint. Before enabling submissions, XiaLabs must publish the backend's actual processing, access, retention, deletion, and contact details. This application currently has no feedback server, remote retention period, or feedback contact channel to disclose.
+
 ## Local Storage and Music Files
 XiaMusic is designed primarily as a local desktop music player.
 
@@ -245,9 +250,10 @@ function renderPolicy() {
 
 type PrivacyPolicyPageProps = {
   onBack: () => void
+  backLabel?: string
 }
 
-export default function PrivacyPolicyPage({ onBack }: PrivacyPolicyPageProps) {
+export default function PrivacyPolicyPage({ onBack, backLabel = 'Back to About' }: PrivacyPolicyPageProps) {
   const backButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -258,7 +264,7 @@ export default function PrivacyPolicyPage({ onBack }: PrivacyPolicyPageProps) {
     <section className="privacy-policy-page" aria-labelledby="privacy-policy-title">
       <div className="privacy-policy-toolbar">
         <button ref={backButtonRef} className="subtle-button privacy-policy-back" type="button" onClick={onBack}>
-          <ArrowLeft size={15} /> Back to About
+          <ArrowLeft size={15} /> {backLabel}
         </button>
       </div>
       <div className="privacy-policy-scroll">

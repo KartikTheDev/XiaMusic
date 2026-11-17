@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, nativeTheme } = require('electron')
 const path = require('node:path')
 
 function createWindow() {
@@ -26,6 +26,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   app.setName('XiaMusic')
+  nativeTheme.themeSource = 'system'
   createWindow()
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
